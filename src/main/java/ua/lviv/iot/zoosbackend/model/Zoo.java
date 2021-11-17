@@ -1,11 +1,9 @@
 package ua.lviv.iot.zoosbackend.model;
 
 import lombok.*;
+import ua.lviv.iot.zoosbackend.model.enums.ZooType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
@@ -19,11 +17,14 @@ public class Zoo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String zooName;
+    private String name;
 
     private Integer numOfVisitors;
 
     private Integer numOfAnimals;
+
+    @Enumerated(EnumType.STRING)
+    private ZooType type;
 
     private Integer entranceFee;
 }

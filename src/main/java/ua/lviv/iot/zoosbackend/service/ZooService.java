@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ZooService {
     List<Zoo> getAllZoos();
+
+    List<Zoo> getZoos(String[] filters);
 }
