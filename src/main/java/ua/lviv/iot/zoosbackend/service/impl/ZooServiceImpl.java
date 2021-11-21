@@ -26,4 +26,19 @@ public class ZooServiceImpl implements ZooService {
     public List<Zoo> getZoos(String[] filters) {
         return zooDao.findZoosByFilters(Arrays.stream(filters).map(ZooType::valueOf).collect(Collectors.toList()));
     }
+
+    @Override
+    public Zoo createZoo(Zoo zoo) {
+        return zooDao.save(zoo);
+    }
+
+    @Override
+    public Zoo updateZoo(Zoo zoo) {
+        return zooDao.save(zoo);
+    }
+
+    @Override
+    public void deleteZoo(Integer id) {
+        zooDao.deleteById(id);
+    }
 }

@@ -6,8 +6,6 @@ import ua.lviv.iot.zoosbackend.model.Zoo;
 import ua.lviv.iot.zoosbackend.model.enums.ZooType;
 import ua.lviv.iot.zoosbackend.service.ZooService;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -19,7 +17,7 @@ public class ZooController {
     private final ZooService zooService;
 
     @GetMapping
-    public List<Zoo> getAllZoos(@RequestParam(value = "filters", required = false) String[] filters) {
+    public List<Zoo> getAllZoos(final @RequestParam(value = "filters", required = false) String[] filters) {
         if (filters != null) {
             return filters.length != 0 ? zooService.getZoos(filters) : zooService.getAllZoos();
         }
@@ -29,5 +27,20 @@ public class ZooController {
     @GetMapping("/types")
     public ZooType[] getAllZooTypes() {
         return ZooType.values();
+    }
+
+    @PostMapping
+    public Zoo createZoo(final @RequestBody Zoo zoo) {
+        return zooService.createZoo(zoo);
+    }
+
+    @PutMapping
+    public Zoo updateZoo(final @RequestBody Zoo zoo) {
+        return zooService.updateZoo(zoo);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteZoo(final @PathVariable("id") Integer id) {
+        zooService.deleteZoo(id);
     }
 }

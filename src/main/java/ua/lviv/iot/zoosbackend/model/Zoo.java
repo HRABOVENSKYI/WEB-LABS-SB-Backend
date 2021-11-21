@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
 public class Zoo {
 
     @Id

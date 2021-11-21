@@ -12,4 +12,6 @@ import java.util.List;
 public interface ZooDao extends JpaRepository<Zoo, Integer> {
     @Query("select zoo from Zoo zoo where zoo.type in :sqlFiltersList")
     List<Zoo> findZoosByFilters(List<ZooType> sqlFiltersList);
+
+    void deleteById(Integer id);
 }
