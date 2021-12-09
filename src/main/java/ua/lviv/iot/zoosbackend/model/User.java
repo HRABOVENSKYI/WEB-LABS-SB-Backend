@@ -47,7 +47,7 @@ public class User {
     @NotNull
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
-    private Role role;
+    private Role role = Role.USER;
 
     @NotNull
     @Column(name = "is_banned", nullable = false)
