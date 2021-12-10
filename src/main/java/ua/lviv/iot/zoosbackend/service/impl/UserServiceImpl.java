@@ -17,4 +17,9 @@ public class UserServiceImpl implements UserService {
     public User getByEmail(String email) {
         return userDao.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User doesn't exists"));
     }
+
+    @Override
+    public User save(User user) {
+        return userDao.save(user);
+    }
 }

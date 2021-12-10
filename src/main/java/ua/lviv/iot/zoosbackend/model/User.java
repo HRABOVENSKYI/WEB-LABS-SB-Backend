@@ -52,4 +52,11 @@ public class User {
     @NotNull
     @Column(name = "is_banned", nullable = false)
     private Boolean isBanned = false;
+
+    public User(String email, String password, String firstName, String lastName) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
