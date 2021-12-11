@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import ua.lviv.iot.zoosbackend.exception.JwtAuthenticationException;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
 
@@ -66,9 +65,5 @@ public class JwtTokenProvider {
 
     public String getEmail(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
-    }
-
-    public String resolveToken(HttpServletRequest request) {
-        return request.getHeader(authorizationHeader);
     }
 }

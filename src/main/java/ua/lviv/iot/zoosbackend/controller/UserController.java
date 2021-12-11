@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.lviv.iot.zoosbackend.dto.auth.AuthenticationRequestDto;
 import ua.lviv.iot.zoosbackend.dto.user.UserRegistrationDto;
-import ua.lviv.iot.zoosbackend.mapper.Mapper;
 import ua.lviv.iot.zoosbackend.model.User;
 import ua.lviv.iot.zoosbackend.model.enums.Role;
 import ua.lviv.iot.zoosbackend.security.JwtTokenProvider;
@@ -28,7 +27,7 @@ import java.util.Map;
 
 import static ua.lviv.iot.zoosbackend.mapper.Mapper.mapUserToUserDto;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @Controller
 @AllArgsConstructor
 @RequestMapping("/user")

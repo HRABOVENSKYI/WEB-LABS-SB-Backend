@@ -9,7 +9,7 @@ import ua.lviv.iot.zoosbackend.service.ZooService;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/zoos")
