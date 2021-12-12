@@ -25,8 +25,6 @@ public class JwtTokenProvider {
 
     @Value("${jwt.secret}")
     private String secretKey;
-    @Value("${jwt.header}")
-    private String authorizationHeader;
     @Value("${jwt.expiration}")
     private Long validityInMilliseconds;
 
