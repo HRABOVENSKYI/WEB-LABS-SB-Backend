@@ -25,15 +25,13 @@ public class JwtTokenProvider {
 
     @Value("${jwt.secret}")
     private String secretKey;
-    @Value("${jwt.expiration}")
-    private Long validityInMilliseconds;
 
     @PostConstruct
     private void init() {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    public String createToken(String username, String role) {
+    public String createToken(String username, String role, Long validityInMilliseconds) {
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("role", role);
         Date now = new Date();
@@ -63,5 +61,9 @@ public class JwtTokenProvider {
 
     public String getEmail(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    }
+
+    public Object getRole(String token) {
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().get("role");
     }
 }
