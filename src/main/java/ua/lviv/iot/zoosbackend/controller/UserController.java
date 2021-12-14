@@ -73,4 +73,9 @@ public class UserController {
         SecurityContextLogoutHandler securityContextLogoutHandler = new SecurityContextLogoutHandler();
         securityContextLogoutHandler.logout(request, response, null);
     }
+
+    @GetMapping("/validate-token")
+    public ResponseEntity<Boolean> validate(@RequestHeader("token") String token) {
+        return ResponseEntity.ok(jwtTokenProvider.validateToken(token));
+    }
 }
